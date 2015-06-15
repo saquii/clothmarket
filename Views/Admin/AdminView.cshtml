@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "Saquib";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+@model List<ClothMarketApplication.Models.ContactTable>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin</title>
+
+    <link href="~/Content/AdminView/css/layout.css" rel="stylesheet" />
+
+    <script src="~/Content/AdminView/js/jquery-1.5.2.min.js"></script>
+
+    <script src="~/Content/AdminView/js/hideshow.js"></script>
+
+    <script src="~/Content/AdminView/js/jquery.tablesorter.min.js"></script>
+
+    <script src="~/Content/AdminView/js/jquery.equalHeight.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+</head>
+
+<body>
+    <section id="secondary_bar"></section>
+    
+    <aside id="sidebar" class="column">
+
+
+
+        <h3>ITEMS</h3>
+        <ul class="toggle">
+            <li class="icn_new_article"><a href="/Admin/AddItemsView">Add Item </a></li>
+            <li class="icn_edit_article"><a href="/Admin/UpdateItemsView">Update Item</a></li>
+            <li class="icn_tags"><a href="/Admin/DeleteItemsView">Delete Items</a></li>
+            <li class="icn_categories"><a href="/Admin/ViewAllItems">View All Items</a></li>
+            <li class="icn_jump_back"><a href="/Admin/SearchItemView">Search Item</a></li>
+        </ul>
+        <h3>Users</h3>
+        <ul class="toggle">
+            <li class="icn_view_users"><a href="/Admin/ViewAllUsers">View Users</a></li>
+            <li class="icn_profile"><a href="/Admin/DeleteUserView">Delete User</a></li>
+            <li class="icn_jump_back"><a href="/Admin/SearchUserView">Search User</a></li>
+        </ul>
+
+    </aside><!-- end of sidebar -->
+
+    <section id="main" class="column">
+
+        <article class="module width_full" >
+           
+            <header><h3>Messages</h3></header>
+            <div class="message_list">
+                <div class="module_content">
+                    <div class="message">
+                        @foreach(var i in Model)
+                        {
+                            <p>@i.message</p>
+                            <p><strong>@i.name</strong><br><small>@i.email</small><a class="btn btn-danger" href="/Account/delmsg?id=@i.Id" style="float : right"> Delete </a></p>
+                            <p>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+                            <br>
+                        }   
+                    </div>
+                </div>
+            </div>
+            <footer>
+                @*<form class="post_message">
+                    <input type="text" value="Message" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+                    <input type="submit" class="btn_post_message" value="" />
+                </form>*@
+            </footer>
+        </article><!-- end of messages article -->
+
+        <article class="module width_full">
+
+            <header><h3>Reports</h3></header>
+            <div class="message_list">
+                <div class="module_content">
+                    <div class="message">
+                        @foreach (var r in Model)
+                        {
+                            <p>@r.ReportMessage</p>
+                            <p><strong>@r.name</strong><br><small>@r.email</small><a class="btn btn-success" href="/Account/delmsg?id=@r.Id" style="float : right"> Delivered </a></p>
+                            <p>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+                            <br>
+                        }
+                    </div>
+                </div>
+            </div>
+        </article>
+
+
+        <div class="clear"></div>
+          
+        <div class="spacer"></div>
+    </section>
+
+</body>
+</html> 

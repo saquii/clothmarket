@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "UpdateUserView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="/Admin/UpdateUser" method="post" enctype="multipart/form-data">
+    <h2 style="margin-left: 5%; font-family: 'Comic Sans MS'">Update Your Profile</h2>
+    <br>
+    <div class="form-group">
+
+        <br />
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <h4>Name </h4>
+            </div>
+            <div class="col-md-4">
+                <input type="text" placeholder="Name" name="name" style="color:blue" class="form-control" required>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <h4>Email </h4>
+            </div>
+            <div class="col-md-4">
+                <input type="email" placeholder="Email" name="email" style="color: blue" class="form-control" required>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <h4>Password </h4>
+            </div>
+            <div class="col-md-4">
+                <input type="password" placeholder="Password" name="password" style="color: blue" class="form-control" required>
+            </div>
+        </div>
+        <br />
+        <br>
+        <div style="margin-left:17% ; font-family:'Comic Sans MS'">
+            <input type="file" class="file" name="profilePic" required />
+        </div>
+        <br />
+
+        <br />
+        <div class="row">
+            <div style="margin-left:15%" class="col-md-3">
+                <input type="submit" class="btn btn-success">
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

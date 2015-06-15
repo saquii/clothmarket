@@ -1,0 +1,68 @@
+﻿@model ClothMarketApplication.Models.UserProfile
+
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left:15% ; font-family:'Comic Sans MS'" >
+    <h1>@ViewBag.Title </h1>
+</div>
+ 
+    @using (Html.BeginForm("ValidateLogin", "Account", FormMethod.Post))  
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+               
+          <br>
+    <div class="form-group">
+
+        <br />
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <h4>UserName </h4>
+            </div>
+            <div class="col-md-4">
+                
+            <input type="text" name="username" placeholder="Username" style="color: blue" class="form-control" required>
+            </div>
+        </div>
+          
+          <br />
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <h4>Password </h4>
+            </div>
+            <div class="col-md-4">
+                
+            <input type="password" name="password" placeholder="Password" style="color: blue" class="form-control" required>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div style="margin-left:17%" class="col-md-3">
+                <input type="submit" value="Log in" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+          
+    <br>
+        
+    <div style="margin-left:15%" class="col-md-3">
+        <button type="submit" class="btn btn-warning " />
+        @Html.ActionLink("Register", "Register")
+
+        <p>
+            if you don't have an account
+        </p>
+    </div>
+        
+        <br>
+
+    }
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

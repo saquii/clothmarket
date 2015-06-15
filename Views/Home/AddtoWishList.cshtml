@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "AddtoWishList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+   
+@model List<ClothMarketApplication.Models.WishListTable>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="navbar-brand"><a href="/Home/Index" style="color: orange; font-family: 'Comic Sans MS'">Cloth Market</a></div>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+
+                    <li><a href="/Home/Catlog?item=Male&l=x" style="font-family:'Comic Sans MS'">Male Section</a></li>
+                    <li><a href="/Home/Catlog?item=Female&l=x" style="font-family:'Comic Sans MS'">Female Section</a></li>
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" style="font-family:'Comic Sans MS'">
+
+                            Price Range <span class="caret"></span>
+
+                            @{String p = (String)Session["ItmPrice"];}
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/Home/Catlog?item=p&l=a">1000 - 1999 (Rs)</a></li>
+                                <li><a href="/Home/Catlog?item=p&l=b">2000 - 2999 (Rs)</a></li>
+                                <li><a href="/Home/Catlog?item=p&l=c">3000 - 3999 (Rs)</a></li>
+                                <li><a href="/Home/Catlog?item=p&l=d">4000 - 4999 (Rs)</a></li>
+                                <li><a href="/Home/Catlog?item=p&l=e">5000 - 5999 (Rs)</a></li>
+                                <li><a href="/Home/Catlog?item=p&l=f">6000 - 6999 (Rs)</a></li>
+                                <li><a href="/Home/Catlog?item=p&l=g">7000 - 7999 (Rs)</a></li>
+                                <li><a href="/Home/Catlog?item=p&l=h">8000 - 8999 (Rs)</a></li>
+                            </ul>
+                        </a>
+                    </li>
+                </ul>
+
+                <form class="navbar-form navbar-left pull-right" role="Search" action="/Home/SearchCatlog">
+                    <div class="form-group">
+                        <input type="text" name="item" class="form-control" placeholder="Search" />
+                    </div>
+
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+            </div>
+            @if (Session["username"] != null)
+            {
+                int obj = (int)Session["uid"];
+
+                <nav>
+                    <div class="btn-group btn-group-justified">
+                        <a class="btn btn-warning" href="/Home/showcart?id=@obj" style="color: black; font-family: 'Comic Sans MS'"><h4>My Cart</h4></a>
+                    </div>
+                </nav>
+            }
+
+
+        </div>
+    </nav>
+
+
+    @foreach (var i in Model)
+    {
+        <div class="col-md-4">
+
+            <a href="~/Files/@i.PicPath" class="thumbnail">
+                <img src="~/Files/@i.PicPath" alt="~/Files/@i.PicPath" style="width:290px;height:220px" />
+            </a>
+            <div class="caption">
+                <h3>@i.Name</h3>
+                <h4>Description : @i.Description</h4>
+                <h4><p>Price : @i.Price</p></h4>
+                @if (Session["username"] == null)
+                {
+                    <p><a href="/Account/Login" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">buy</a></p>
+                }
+                else if (Session["username"] != null)
+                {
+                    <p><a href="/Home/Addcart?id=@i.ItemTable.Id" class="btn btn-primary" role="button">Add to cart</a> <a href="#" class="btn btn-default" role="button">buy</a> <a href="/Home/deleteWishItem?id=@i.Id" class="btn btn-warning" role="button">Delete</a></p>
+                }
+            </div>
+        </div>
+    }
+
+
+</body>

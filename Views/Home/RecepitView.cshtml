@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "RecepitView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<ClothMarketApplication.Models.CartTable>
+
+
+<body>
+            <div class="container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Picture</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{int count = 0;}
+
+                    @foreach (var v in Model)
+                    {
+                        count++;
+                        
+                          if ((int)Session["uid"] == v.userId)
+                           {
+
+                        <tr>
+                            <td><h5>@count</h5></td>
+                            <td><h5>@v.ItemTable.name </h5></td>
+
+                            <td><h5>@v.ItemTable.description </h5></td>
+                            <td>
+                                <h5>
+                                    <img src="~/Files/@v.picture" height="100" width="140" />
+                                </h5>
+                            </td>
+                            <td><h5> @v.ItemTable.price </h5></td>
+
+                        </tr>
+                            }
+                    }
+                    </tbody>
+                </table>
+                <h3 style="float : right">Total Price : <small><strong>@ViewBag.total</strong> </small></h3>
+                @{int objc = (int)Session["uid"];}
+                <a class="btn btn-info" href="/Home/Recepit?id=@objc"> Checkout </a>
+            </div>
+
+    <div class="text-center">
+        <p><strong> Time : </strong>@DateTime.Now.Hour - @DateTime.Now.Minute - @DateTime.Now.Second     <strong>Date : </strong>@DateTime.Now.Day - @DateTime.Now.Month - @DateTime.Now.Year </p>
+    </div>
+
+    </body>

@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "UpdateItemsView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="/Admin/Update" method="post" enctype="multipart/form-data">
+    <h2 style="margin-left: 5%; font-family: 'Comic Sans MS'">Update Item</h2>
+    <br>
+    <div class="form-group">
+
+        <br />
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <h4>Enter ID</h4>
+            </div>
+            <div class="col-md-4">
+                <input type="text" placeholder="ID" name="Id" style="color: blue" class="form-control" required>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <h4>Name </h4>
+            </div>
+            <div class="col-md-4">
+                <input type="text" placeholder="Name" name="name" style="color:blue" class="form-control" required>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <h4>Description </h4>
+            </div>
+            <div class="col-md-4">
+                <input type="text" placeholder="description" name="description" style="color: blue" class="form-control" required>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <h4>Price </h4>
+            </div>
+            <div class="col-md-4">
+                <input type="number" placeholder="price" name="price" style="color: blue" class="form-control" required>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2 text-right">
+                <h4>Type</h4>
+            </div>
+            <div class="col-md-4">
+                <select class="form-control" name="type" required>
+                    <option>Female</option>
+                    <option>Male</option>
+                </select>
+                <h5>(Male or Female)</h5>
+            </div>
+        </div>
+        <br>
+        <div style="margin-left:17% ; font-family:'Comic Sans MS'">
+            <input type="file" class="file" name="picturePath" required />
+        </div>
+        <br />
+
+        <br />
+        <div class="row">
+            <div style="margin-left:15%" class="col-md-3">
+                <input type="submit" class="btn btn-success">
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

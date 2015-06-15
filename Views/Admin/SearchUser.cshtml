@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "SearchUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <h4 class="text-center"><strong>(ID)       =  </strong>@ViewBag.SrchUser.Id<br></h4>
+    <h4 class="text-center"><strong>(Name)     =  </strong>@ViewBag.SrchUser.name<br></h4>
+    <h4 class="text-center"><strong>(Email) =  </strong>@ViewBag.SrchUser.email<br></h4>
+    <h4 class="text-center"><strong>(Password)  =  </strong>@ViewBag.SrchUser.password<br></h4>
+    <h4 class="text-center"><img src="~/Files/@ViewBag.SrchUser.profilePic" height="100" width="120" /><br></h4>   
+    <h4 class="text-center"><a href="/Home/ShowHistory?id=@ViewBag.SrchUser.Id" class="btn btn-primary" role="button">Show History</a></h4>
+
+</p>

@@ -1,0 +1,66 @@
+﻿@if (Session["username"] != null)
+{
+        String path = (String) Session["propic"];
+   
+    <text>
+        
+        <div>
+            <img src="~/Files/@path" height="100" width="140" /> 
+        </div>
+
+       <div style= "font-family:'Comic Sans MS'"> Welcome,
+        @Html.ActionLink((string)Session["username"], "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!</div>
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+        
+        int i = (int) Session["uid"];
+        String ad = (String) Session["username"];
+        
+        <div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        Settings <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/Admin/UpdateUserView">Update Profile</a></li>
+                        <li><a href="/Admin/DeleteUserByOwn?id=@i">Remove Account</a></li>
+                        <li><a href="/Home/ShowHistory?id=@i">My History</a></li>
+                        @if (ad == "admin")
+                        {
+                            <li><a href="/Admin/AdminView">Admin Page</a></li>
+                        }
+                    </ul>
+                </div>
+
+            <input type="submit" value="Log Out" class="btn btn-warning" />
+            <a href="javascript:document.getElementById('logoutForm').submit()"></a>
+            
+
+        </div>
+        <br>
+    }
+</text>
+
+
+}
+else
+{
+
+    <div>
+        <div>
+            <button type="submit" class="btn btn-warning " />
+            @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", style = "color: black" })
+        </div>
+
+        <br />
+
+        <div>
+            <button type="submit" class="btn btn-warning" />
+            @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", style = "color:black" })
+        </div>
+
+    </div>
+
+
+}

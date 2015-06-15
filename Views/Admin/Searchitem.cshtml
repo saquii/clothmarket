@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Searchitem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <h4 class="text-center"><strong>(ID)       =  </strong>@ViewBag.Srchitem.Id<br></h4>
+    <h4 class="text-center"><strong>(Name)     =  </strong>@ViewBag.Srchitem.name<br></h4>
+    <h4 class="text-center"><strong>(description) =  </strong>@ViewBag.Srchitem.description<br></h4>
+    <h4 class="text-center"><strong>(Price) =  </strong>@ViewBag.Srchitem.price<br></h4>
+    <h4 class="text-center"><strong>(Type) =  </strong>@ViewBag.Srchitem.type<br></h4>
+    <h4 class="text-center"><img src="~/Files/@ViewBag.Srchitem.picturePath" height="100" width="120" /><br></h4>
+</p>
